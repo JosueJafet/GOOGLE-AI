@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-app-bg: var(--bg-primary);
+  --color-sidebar-bg: var(--bg-secondary);
+  --color-card-bg: var(--bg-tertiary);
+  --color-text-main: var(--text-primary);
+  --color-text-dim: var(--text-secondary);
+  --color-border-main: var(--border-primary);
+}
+
+@layer base {
+  :root {
+    --bg-primary: #050505;
+    --bg-secondary: #080808;
+    --bg-tertiary: #0a0a0a;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.4);
+    --border-primary: rgba(255, 255, 255, 0.05);
+  }
+
+  :root.light {
+    --bg-primary: #fafafa;
+    --bg-secondary: #f0f0f0;
+    --bg-tertiary: #ffffff;
+    --text-primary: #0a0a0a;
+    --text-secondary: rgba(0, 0, 0, 0.4);
+    --border-primary: rgba(0, 0, 0, 0.05);
+  }
+
+  body {
+    @apply bg-app-bg text-text-main transition-colors duration-300 antialiased selection:bg-text-main selection:text-app-bg;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--text-secondary);
+    opacity: 0.1;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    opacity: 0.2;
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  }
+  
+  .bg-glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  }
+  
+  .bg-glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+  }
+}

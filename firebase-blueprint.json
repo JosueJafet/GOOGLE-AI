@@ -1,0 +1,63 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile and settings",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "createdAt": { "type": "number" }
+      },
+      "required": ["uid", "email"]
+    },
+    "Task": {
+      "title": "Task",
+      "description": "A productivity task",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "uid": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "energyRequired": { "type": "string", "enum": ["low", "medium", "high"] },
+        "duration": { "type": "number" },
+        "completed": { "type": "boolean" },
+        "createdAt": { "type": "number" },
+        "priority": { "type": "number" }
+      },
+      "required": ["id", "uid", "title", "energyRequired", "duration", "completed", "createdAt"]
+    },
+    "FlowSession": {
+      "title": "FlowSession",
+      "description": "A recorded focus session",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "uid": { "type": "string" },
+        "taskId": { "type": "string" },
+        "startTime": { "type": "number" },
+        "endTime": { "type": "number" },
+        "duration": { "type": "number" },
+        "focusScore": { "type": "number" }
+      },
+      "required": ["id", "uid", "startTime", "duration", "focusScore"]
+    }
+  },
+  "firestore": {
+    "/users/{uid}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "/tasks/{taskId}": {
+      "schema": "Task",
+      "description": "User tasks"
+    },
+    "/sessions/{sessionId}": {
+      "schema": "FlowSession",
+      "description": "User focus sessions"
+    }
+  }
+}
